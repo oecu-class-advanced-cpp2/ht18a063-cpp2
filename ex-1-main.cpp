@@ -17,8 +17,8 @@
 int nth_prime(unsigned int a, unsigned int d, unsigned int n) {
 	std::vector<int> v;
 	unsigned int y = 0; //変数の個数計測
-	while(a<1000000) {
-		int x=0; //素数判定用の変数(0=素数、0以外=素数じゃない)
+	while (a<CPP2_PRIME_UPPER_LIMIT) {
+		int x = 0; //素数判定用の変数(0=素数、0以外=素数じゃない)
 		for (unsigned int i = 2; i < a; i++) {
 			if (a%i == 0) {
 				x += 1;
@@ -30,7 +30,7 @@ int nth_prime(unsigned int a, unsigned int d, unsigned int n) {
 			v.push_back(a);
 			y++;
 			if (y == n)
-				return v[y-1];
+				return v[y - 1];
 		}
 		a += d;
 
@@ -40,6 +40,21 @@ int nth_prime(unsigned int a, unsigned int d, unsigned int n) {
 
 
 int main() {
+	// 求めたい式・値の個数倍
+	// 式12個で要素3つと答え一つのため、12*4
+	int nth[48] = { 367,186,151,92809,179,10,203,6709,271,37,39,12037,103,230,1,103,27,104,185,93523,253,50,85,14503,1,1,1,2,9075,337,210,899429,307,24,79,5107,331,221,177,412717,259,170,40,22699,269,58,102,25673 };
+	for (int i = 0;i < 48; i += 4) {
+		std::cout << nth[i] << "," << nth[i + 1] << "," << nth[i + 2] << "=" << nth_prime(nth[i], nth[i + 1], nth[i + 2]) << "　　答え：" << nth[i + 3] << std::endl;
+		if (nth_prime(nth[i], nth[i + 1], nth[i + 2]) == nth[i + 3]) {
+			std::cout << "正解" << std::endl;
+		}
+		else
+		{
+			std::cout << "不正解" << std::endl;
+		}
+
+	}
+	/**
 	std::cout << nth_prime(367, 186, 151) << std::endl;
 	std::cout << nth_prime(179, 10, 203) << std::endl;
 	std::cout << nth_prime(271, 37, 39) << std::endl;
@@ -52,6 +67,7 @@ int main() {
 	std::cout << nth_prime(331, 221, 177) << std::endl;
 	std::cout << nth_prime(259, 170, 40) << std::endl;
 	std::cout << nth_prime(269, 58, 102) << std::endl;
+	**/
 	//以下、同様に入出力例通りになるか確認せよ。
 	std::cin.get();
 	return 0;
