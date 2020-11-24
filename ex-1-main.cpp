@@ -15,6 +15,9 @@
 */
 /*-----------------------------------------------------------*/
 int nth_prime(unsigned int a, unsigned int d, unsigned int n) {
+	if(a<=0 || d<=0 || n<=0){
+		return false;
+	}
 	std::vector<int> v;
 	unsigned int y = 0; //変数の個数計測
 	while (a<CPP2_PRIME_UPPER_LIMIT) {
@@ -36,7 +39,7 @@ int nth_prime(unsigned int a, unsigned int d, unsigned int n) {
 		a += d;
 
 	}
-
+	return false;
 }
 
 
