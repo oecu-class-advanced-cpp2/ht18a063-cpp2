@@ -22,6 +22,7 @@ int nth_prime(unsigned int a, unsigned int d, unsigned int n) {
 		for (unsigned int i = 2; i < a; i++) {
 			if (a%i == 0) {
 				x += 1;
+				break;
 			}
 		}
 		if (a == 1)
